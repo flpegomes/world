@@ -1,0 +1,146 @@
+[gd_scene format=3 uid="uid://dev67bux4p3nq"]
+
+[ext_resource type="Script" uid="uid://crv6iehh32c2p" path="res://scripts/ui/button_fx.gd" id="1_gvejy"]
+[ext_resource type="FontFile" uid="uid://b4pb7hfofgm0y" path="res://assets/font/ChangaOne-Regular.ttf" id="3_280h6"]
+
+[sub_resource type="Shader" id="Shader_n7nuw"]
+code = "shader_type canvas_item;
+
+uniform vec4 cor_spray : source_color = vec4(0.29, 0.55, 0.42, 1.0);
+uniform float irregularidade : hint_range(0.2, 0.6) = 0.5;
+uniform float suavidade : hint_range(0.0, 0.1) = 0.08;
+uniform float escala_ruido : hint_range(10.0, 100.0) = 80.0;
+uniform float seed : hint_range(0.0, 100.0) = 100.0;
+
+/* --- NOVO: controle de fill --- */
+uniform float fill_amount : hint_range(0.0, 1.0) = 0.0;   // 0 = vazio, 1 = cheio
+uniform float fill_suave : hint_range(0.0, 0.1) = 0.02;    // suavidade da borda do fill
+uniform float fill_irregular : hint_range(0.0, 0.2) = 0.06; // quanto o fill \"morde\" com ruído
+
+// Ruído multi-octave para bordas mais orgânicas
+float hash(vec2 p) {
+    p = fract(p * vec2(123.34, 456.21));
+    p += dot(p, p + 45.32);
+    return fract(p.x * p.y);
+}
+
+float noise(vec2 p) {
+    vec2 i = floor(p);
+    vec2 f = fract(p);
+
+    float a = hash(i);
+    float b = hash(i + vec2(1.0, 0.0));
+    float c = hash(i + vec2(0.0, 1.0));
+    float d = hash(i + vec2(1.0, 1.0));
+
+    vec2 u = f * f * (3.0 - 2.0 * f);
+    return mix(a, b, u.x) + (c - a) * u.y * (1.0 - u.x) + (d - b) * u.x * u.y;
+}
+
+float fbm(vec2 p) {
+    float value = 0.0;
+    float amplitude = 0.5;
+
+    for(int i = 0; i < 4; i++) {
+        value += amplitude * noise(p);
+        p *= 2.0;
+        amplitude *= 0.5;
+    }
+    return value;
+}
+
+void fragment() {
+    vec2 uv = UV;
+
+    /* --- Seu alpha de spray (igual ao original) --- */
+    vec2 centro = abs(uv - 0.5) * 2.0;
+    float dist = max(centro.x, centro.y);
+
+    float ruido = fbm((uv + seed) * escala_ruido);
+
+    dist += ruido * irregularidade - irregularidade * 0.5;
+
+    float alpha = 1.0 - smoothstep(1.0 - suavidade, 1.0, dist);
+
+    float textura_interna = fbm(uv * escala_ruido * 0.5) * 0.1;
+    alpha *= (1.0 - textura_interna);
+
+    /* --- NOVO: máscara de fill esquerda->direita --- */
+    // ruído extra só pra “quebrar” a linha do fill, opcional
+    float ruido_fill = fbm((uv + seed * 0.17) * (escala_ruido * 0.35));
+    float limite = fill_amount + (ruido_fill - 0.5) * fill_irregular;
+
+    // 1.0 à esquerda do limite, 0.0 à direita, com borda suave
+    float mask_fill = 1.0 - smoothstep(limite - fill_suave, limite, uv.x);
+
+    alpha *= mask_fill;
+
+    COLOR = vec4(cor_spray.rgb, cor_spray.a * alpha);
+}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gvejy"]
+resource_local_to_scene = true
+shader = SubResource("Shader_n7nuw")
+shader_parameter/cor_spray = Color(1, 0.22849089, 0.18371579, 1)
+shader_parameter/irregularidade = 0.52500001841773
+shader_parameter/suavidade = 0.10000000149012
+shader_parameter/escala_ruido = 76.374003152765
+shader_parameter/seed = 0.0
+shader_parameter/fill_amount = 1.0
+shader_parameter/fill_suave = 0.0400000019
+shader_parameter/fill_irregular = 0.20000000298023
+
+[node name="ButtonFX" type="Control" unique_id=356030614]
+custom_minimum_size = Vector2(150, 30)
+layout_mode = 3
+anchors_preset = 0
+offset_left = 501.0
+offset_top = 299.0
+offset_right = 651.0
+offset_bottom = 329.0
+pivot_offset = Vector2(76, 11)
+script = ExtResource("1_gvejy")
+hover_text_color = Color(0, 0, 0, 1)
+
+[node name="Button" type="Button" parent="." unique_id=1595117309]
+clip_children = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -7.0
+grow_horizontal = 2
+grow_vertical = 2
+flat = true
+
+[node name="Fill" type="ColorRect" parent="Button" unique_id=604751855]
+material = SubResource("ShaderMaterial_gvejy")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Button" unique_id=58216038]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(37, 12)
+mouse_filter = 2
+theme_override_constants/margin_left = 20
+
+[node name="Label" type="Label" parent="Button/MarginContainer" unique_id=532182481]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_280h6")
+text = "TEXT"
+vertical_alignment = 1
+
+[connection signal="mouse_entered" from="Button" to="." method="_on_button_mouse_entered"]
+[connection signal="mouse_exited" from="Button" to="." method="_on_button_mouse_exited"]

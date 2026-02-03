@@ -1,12 +1,12 @@
 [gd_scene format=3 uid="uid://317l1v0nnhgq"]
 
-[ext_resource type="Script" uid="uid://n4rcwxlwcl0f" path="res://scenes/ui/main_menu.gd" id="1_j11lk"]
-[ext_resource type="Script" uid="uid://dglk5c7vtb25c" path="res://scenes/ui/video.gd" id="1_ooglm"]
-[ext_resource type="Script" uid="uid://cnmvjalb2ylif" path="res://scenes/ui/audio.gd" id="2_cglj6"]
-[ext_resource type="Script" uid="uid://8jov4x7sr5o" path="res://scenes/ui/controls.gd" id="3_4yppp"]
-[ext_resource type="Script" uid="uid://cfhoxje2jcgu7" path="res://scenes/ui/game.gd" id="4_6tyoi"]
+[ext_resource type="Script" uid="uid://n4rcwxlwcl0f" path="res://scenes/test/ui/main_menu.gd" id="1_j11lk"]
+[ext_resource type="Script" uid="uid://dglk5c7vtb25c" path="res://scenes/test/ui/video.gd" id="1_ooglm"]
+[ext_resource type="Script" uid="uid://cnmvjalb2ylif" path="res://scenes/test/ui/audio.gd" id="2_cglj6"]
+[ext_resource type="Script" uid="uid://8jov4x7sr5o" path="res://scenes/test/ui/controls.gd" id="3_4yppp"]
+[ext_resource type="Script" uid="uid://cfhoxje2jcgu7" path="res://scenes/test/ui/game.gd" id="4_6tyoi"]
 
-[node name="Login" type="Control" unique_id=1733025708]
+[node name="Login" type="Control" unique_id=1733025708 node_paths=PackedStringArray("menu", "main_settings", "video_settings", "audio_settings", "controls_settings", "game_settings", "video_button", "audio_button", "controls_button", "game_button", "settings_button")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -14,29 +14,39 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_j11lk")
+menu = NodePath("Menu")
+main_settings = NodePath("Settings")
+video_settings = NodePath("Video")
+audio_settings = NodePath("Audio")
+controls_settings = NodePath("Controls")
+game_settings = NodePath("Game")
+video_button = NodePath("Settings/Control/Video")
+audio_button = NodePath("Settings/Control2/Audio")
+controls_button = NodePath("Settings/Control3/Controls")
+game_button = NodePath("Settings/Control4/Game")
+settings_button = NodePath("Menu/Control3/Settings")
 
-[node name="ButtonMenu Login_Register" type="VBoxContainer" parent="." unique_id=711917540]
+[node name="Menu" type="VBoxContainer" parent="." unique_id=1338179058]
 visible = false
-custom_minimum_size = Vector2(100, 100)
+custom_minimum_size = Vector2(150, 150)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -50.0
-offset_top = -50.0
-offset_right = 50.0
-offset_bottom = 50.0
+offset_left = -75.0
+offset_top = -75.0
+offset_right = 75.0
+offset_bottom = 75.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Control" type="Control" parent="ButtonMenu Login_Register" unique_id=2056875674]
+[node name="Control" type="Control" parent="Menu" unique_id=1400955093]
 layout_mode = 2
-size_flags_horizontal = 5
-size_flags_vertical = 7
+size_flags_vertical = 3
 
-[node name="Login" type="Button" parent="ButtonMenu Login_Register/Control" unique_id=545814266]
+[node name="Register" type="Button" parent="Menu/Control" unique_id=605091864]
 layout_mode = 1
 anchors_preset = 14
 anchor_top = 0.5
@@ -46,88 +56,58 @@ offset_top = -15.5
 offset_bottom = 15.5
 grow_horizontal = 2
 grow_vertical = 2
-pivot_offset = Vector2(50, 15)
-text = "Login"
-
-[node name="Control2" type="Control" parent="ButtonMenu Login_Register" unique_id=1883653850]
-layout_mode = 2
-size_flags_horizontal = 5
-size_flags_vertical = 7
-
-[node name="Register" type="Button" parent="ButtonMenu Login_Register/Control2" unique_id=1892831640]
-layout_mode = 1
-anchors_preset = 14
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_top = -15.5
-offset_bottom = 15.5
-grow_horizontal = 2
-grow_vertical = 2
-pivot_offset = Vector2(50, 15)
 text = "Register"
 
-[node name="ButtonMenu Quit" type="VBoxContainer" parent="." unique_id=2047297776]
-visible = false
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -20.0
-offset_top = -40.0
-offset_right = 20.0
-grow_horizontal = 2
-grow_vertical = 0
-
-[node name="Control3" type="Control" parent="ButtonMenu Quit" unique_id=955190431]
+[node name="Control2" type="Control" parent="Menu" unique_id=1998452179]
 layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 4
+size_flags_vertical = 3
 
-[node name="Quit" type="Button" parent="ButtonMenu Quit/Control3" unique_id=668028225]
-layout_mode = 0
-offset_right = 8.0
-offset_bottom = 8.0
-pivot_offset = Vector2(50, 15)
-text = "Quit"
-
-[node name="ButtonMenu Settings" type="VBoxContainer" parent="." unique_id=1547856602]
-visible = false
+[node name="Login" type="Button" parent="Menu/Control2" unique_id=625942886]
 layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -81.0
-offset_top = -40.0
-grow_horizontal = 0
-grow_vertical = 0
-
-[node name="Control4" type="Control" parent="ButtonMenu Settings" unique_id=2000352417]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 6
-
-[node name="Settings" type="Button" parent="ButtonMenu Settings/Control4" unique_id=561417549]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
+anchors_preset = 14
 anchor_top = 0.5
-anchor_right = 0.5
+anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = -35.0
 offset_top = -15.5
-offset_right = 35.0
 offset_bottom = 15.5
 grow_horizontal = 2
 grow_vertical = 2
-pivot_offset = Vector2(50, 15)
-text = "Settings"
+text = "Login"
 
-[node name="Menu Settings" type="VBoxContainer" parent="." unique_id=1323702742]
+[node name="Control3" type="Control" parent="Menu" unique_id=24210080]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Settings" type="Button" parent="Menu/Control3" unique_id=1563159634]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -15.5
+offset_bottom = 15.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Settings"
+metadata/_edit_use_anchors_ = true
+
+[node name="Control4" type="Control" parent="Menu" unique_id=1451288295]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Quit" type="Button" parent="Menu/Control4" unique_id=1651859629]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -15.5
+offset_bottom = 15.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Quit"
+
+[node name="Settings" type="VBoxContainer" parent="." unique_id=1323702742]
 visible = false
 custom_minimum_size = Vector2(100, 130)
 layout_mode = 1
@@ -143,11 +123,11 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Control4" type="Control" parent="Menu Settings" unique_id=2022353696]
+[node name="Control4" type="Control" parent="Settings" unique_id=2022353696]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Game" type="Button" parent="Menu Settings/Control4" unique_id=201976602]
+[node name="Game" type="Button" parent="Settings/Control4" unique_id=201976602]
 layout_mode = 1
 anchors_preset = 14
 anchor_top = 0.5
@@ -159,11 +139,11 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "Game"
 
-[node name="Control" type="Control" parent="Menu Settings" unique_id=299961704]
+[node name="Control" type="Control" parent="Settings" unique_id=299961704]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Video" type="Button" parent="Menu Settings/Control" unique_id=965691360]
+[node name="Video" type="Button" parent="Settings/Control" unique_id=965691360]
 layout_mode = 1
 anchors_preset = 14
 anchor_top = 0.5
@@ -175,11 +155,11 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "Video"
 
-[node name="Control2" type="Control" parent="Menu Settings" unique_id=1707538925]
+[node name="Control2" type="Control" parent="Settings" unique_id=1707538925]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Audio" type="Button" parent="Menu Settings/Control2" unique_id=367281585]
+[node name="Audio" type="Button" parent="Settings/Control2" unique_id=367281585]
 layout_mode = 1
 anchors_preset = 14
 anchor_top = 0.5
@@ -191,11 +171,11 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "Audio"
 
-[node name="Control3" type="Control" parent="Menu Settings" unique_id=596364543]
+[node name="Control3" type="Control" parent="Settings" unique_id=596364543]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Controls" type="Button" parent="Menu Settings/Control3" unique_id=688801763]
+[node name="Controls" type="Button" parent="Settings/Control3" unique_id=688801763]
 layout_mode = 1
 anchors_preset = 14
 anchor_top = 0.5
@@ -440,6 +420,7 @@ layout_mode = 2
 text = "Right"
 
 [node name="Game" type="VBoxContainer" parent="." unique_id=1528191102 node_paths=PackedStringArray("language_option")]
+visible = false
 custom_minimum_size = Vector2(200, 100)
 layout_mode = 1
 anchors_preset = 8
