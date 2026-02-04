@@ -19,6 +19,15 @@ config/icon="res://icon.svg"
 
 buses/default_bus_layout="uid://hpwlp3o70n7u"
 
+[display]
+
+mouse_cursor/custom_image="uid://dja00ikneusm2"
+mouse_cursor/custom_image_hotspot=Vector2(8, 4)
+
+[gui]
+
+theme/custom_font="uid://b1ers68cer4ef"
+
 [input]
 
 move_up={
@@ -48,5 +57,4 @@ move_right={
 
 [rendering]
 
-textures/canvas_textures/default_texture_filter=0
 rendering_device/driver.windows="d3d12"

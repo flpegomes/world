@@ -49,13 +49,11 @@ func set_text_color(c: Color) -> void:
 
 func _on_enter() -> void:
 	label.add_theme_color_override("font_color", hover_text_color)
-	button_fx.rotation_degrees = -3
 	_animate_fill(1.0, 0.25)
 
 func _on_exit() -> void:
 	label.add_theme_color_override("font_color", text_color)
 	_animate_fill(0.0, 0.20)
-	button_fx.rotation_degrees = 0
 
 
 func _animate_fill(target: float, dur: float) -> void:

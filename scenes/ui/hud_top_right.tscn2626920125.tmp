@@ -1,0 +1,58 @@
+[gd_scene format=3 uid="uid://cm5htya7hisfr"]
+
+[ext_resource type="Theme" uid="uid://b2l6cda6call3" path="res://theme_test.tres" id="1_47jw8"]
+[ext_resource type="Script" uid="uid://8nnblq476ddc" path="res://scripts/ui/hud_top_right.gd" id="1_o45dh"]
+
+[node name="HUD" type="Control" unique_id=810794185]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_o45dh")
+
+[node name="Menu" type="HBoxContainer" parent="." unique_id=1167648454]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -361.0
+offset_top = 6.0
+offset_right = -5.0
+offset_bottom = 25.0
+grow_horizontal = 0
+theme_override_constants/separation = 6
+alignment = 2
+
+[node name="Teste" type="Button" parent="Menu" unique_id=41341]
+layout_mode = 2
+theme = ExtResource("1_47jw8")
+toggle_mode = true
+text = "     "
+
+[node name="Settings" type="Button" parent="Menu" unique_id=1662648385]
+layout_mode = 2
+theme = ExtResource("1_47jw8")
+toggle_mode = true
+text = " SETTINGS "
+
+[node name="Settings Panel" type="Panel" parent="." unique_id=807878924]
+visible = false
+custom_minimum_size = Vector2(450, 300)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_47jw8")
+
+[connection signal="toggled" from="Menu/Settings" to="." method="_on_settings_toggled"]

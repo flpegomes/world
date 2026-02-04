@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://b4exxtkgvxtno"
-path="res://.godot/imported/Bungee-Regular.ttf-30fb3eca8b844595f0d97c22756c43ce.fontdata"
+uid="uid://b1ers68cer4ef"
+path="res://.godot/imported/ShareTech-Regular.ttf-dc0dc08b00eb8eaf89c7553e703f13d5.fontdata"
 
 [deps]
 
-source_file="res://assets/font/Bungee-Regular.ttf"
-dest_files=["res://.godot/imported/Bungee-Regular.ttf-30fb3eca8b844595f0d97c22756c43ce.fontdata"]
+source_file="res://assets/font/ShareTech-Regular.ttf"
+dest_files=["res://.godot/imported/ShareTech-Regular.ttf-dc0dc08b00eb8eaf89c7553e703f13d5.fontdata"]
 
 [params]
 

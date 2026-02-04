@@ -1,0 +1,234 @@
+[gd_scene format=3 uid="uid://cm5htya7hisfr"]
+
+[ext_resource type="Theme" uid="uid://b2l6cda6call3" path="res://theme_test.tres" id="1_47jw8"]
+[ext_resource type="Script" uid="uid://8nnblq476ddc" path="res://scripts/ui/hud_top_right.gd" id="1_o45dh"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o45dh"]
+
+[node name="HUD" type="Control" unique_id=810794185]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("1_47jw8")
+script = ExtResource("1_o45dh")
+
+[node name="Menu" type="HBoxContainer" parent="." unique_id=1167648454]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -361.0
+offset_top = 6.0
+offset_right = -5.0
+offset_bottom = 25.0
+grow_horizontal = 0
+theme_override_constants/separation = 6
+alignment = 2
+
+[node name="Teste" type="Button" parent="Menu" unique_id=41341]
+layout_mode = 2
+theme = ExtResource("1_47jw8")
+toggle_mode = true
+text = "     "
+
+[node name="Settings" type="Button" parent="Menu" unique_id=1662648385]
+layout_mode = 2
+theme = ExtResource("1_47jw8")
+toggle_mode = true
+text = " SETTINGS "
+
+[node name="Settings Panel" type="Panel" parent="." unique_id=807878924]
+custom_minimum_size = Vector2(550, 400)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_47jw8")
+
+[node name="Label" type="Label" parent="Settings Panel" unique_id=403642004]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 19.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.61745447, 0.61745495, 0.6174545, 1)
+text = "SETTINGS"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Menu Items" type="VBoxContainer" parent="Settings Panel" unique_id=1510420972]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -163.0
+offset_right = 150.0
+offset_bottom = 197.0
+grow_vertical = 2
+
+[node name="GAME" type="Button" parent="Settings Panel/Menu Items" unique_id=1504747450]
+layout_mode = 2
+theme = ExtResource("1_47jw8")
+theme_override_font_sizes/font_size = 16
+toggle_mode = true
+text = "GAME"
+flat = true
+
+[node name="VIDEO" type="Button" parent="Settings Panel/Menu Items" unique_id=1597747246]
+layout_mode = 2
+theme = ExtResource("1_47jw8")
+theme_override_font_sizes/font_size = 16
+toggle_mode = true
+text = "VIDEO"
+flat = true
+
+[node name="AUDIO" type="Button" parent="Settings Panel/Menu Items" unique_id=1854562603]
+layout_mode = 2
+theme = ExtResource("1_47jw8")
+theme_override_font_sizes/font_size = 16
+toggle_mode = true
+text = "AUDIO"
+flat = true
+
+[node name="KEYBOARD" type="Button" parent="Settings Panel/Menu Items" unique_id=2068945895]
+layout_mode = 2
+theme = ExtResource("1_47jw8")
+theme_override_font_sizes/font_size = 16
+toggle_mode = true
+text = "KEYBOARD"
+flat = true
+
+[node name="Panel Video" type="VBoxContainer" parent="Settings Panel" unique_id=610009485]
+visible = false
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -384.0
+offset_top = 37.0
+offset_right = -18.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Settings Panel/Panel Video" unique_id=1157391915]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Settings Panel/Panel Video/HBoxContainer" unique_id=530941290]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.48962224, 0.48962224, 0.48962218, 1)
+text = "Resolution"
+
+[node name="OptionButton" type="OptionButton" parent="Settings Panel/Panel Video/HBoxContainer" unique_id=1446714035]
+layout_mode = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Settings Panel/Panel Video" unique_id=1742838915]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Settings Panel/Panel Video/HBoxContainer2" unique_id=1407564662]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.48962224, 0.48962224, 0.48962218, 1)
+text = "Window Mode"
+
+[node name="OptionButton" type="OptionButton" parent="Settings Panel/Panel Video/HBoxContainer2" unique_id=2090396737]
+layout_mode = 2
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="Settings Panel/Panel Video" unique_id=1883733751]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Settings Panel/Panel Video/HBoxContainer3" unique_id=442258337]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.48962224, 0.48962224, 0.48962218, 1)
+text = "VSync"
+
+[node name="CheckBox" type="CheckBox" parent="Settings Panel/Panel Video/HBoxContainer3" unique_id=1464469843]
+layout_mode = 2
+
+[node name="Panel Audio" type="VBoxContainer" parent="Settings Panel" unique_id=1399021556]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -384.0
+offset_top = 37.0
+offset_right = -18.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Settings Panel/Panel Audio" unique_id=1290311913]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Settings Panel/Panel Audio/HBoxContainer" unique_id=1463278044]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.48962224, 0.48962224, 0.48962218, 1)
+text = "Master Volume"
+
+[node name="HSlider" type="HSlider" parent="Settings Panel/Panel Audio/HBoxContainer" unique_id=864265799]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Settings Panel/Panel Audio" unique_id=1545849709]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Settings Panel/Panel Audio/HBoxContainer2" unique_id=1663342061]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.48962224, 0.48962224, 0.48962218, 1)
+text = "Music Volume"
+
+[node name="HSlider" type="HSlider" parent="Settings Panel/Panel Audio/HBoxContainer2" unique_id=1301409543]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="Settings Panel/Panel Audio" unique_id=1218500840]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Settings Panel/Panel Audio/HBoxContainer3" unique_id=1935963548]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.48962224, 0.48962224, 0.48962218, 1)
+text = "SFX Volume"
+
+[node name="HSlider" type="HSlider" parent="Settings Panel/Panel Audio/HBoxContainer3" unique_id=1544169176]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+
+[node name="Settings Teste" type="Panel" parent="." unique_id=1394951470]
+visible = false
+custom_minimum_size = Vector2(450, 300)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -97.0
+offset_top = -112.0
+offset_right = 353.0
+offset_bottom = 188.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_47jw8")
+theme_override_styles/panel = SubResource("StyleBoxFlat_o45dh")
+
+[connection signal="toggled" from="Menu/Teste" to="." method="_on_teste_toggled"]
+[connection signal="toggled" from="Menu/Settings" to="." method="_on_settings_toggled"]
